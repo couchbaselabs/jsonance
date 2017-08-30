@@ -1,5 +1,7 @@
 jsonance - WIP / library for analyzing JSON for metadata
 
+jsonance, rhymes with "resonance", is a ... [todo]
+
     j := new(options)
     j := open(previousAnalysis, options)
 
@@ -26,27 +28,25 @@ jsonance - WIP / library for analyzing JSON for metadata
 
     j.analysis()
 
+from cbdatasource (or any data source)...
 
+    get-opaque
+      j.reader.getOpaque()
 
+    rollbackEx(vbucketID uint16, vbucketUUID uint64, rollbackSeq uint64) error
 
-cbdatasource (or any data source)
-  get-opaque
-    j.reader.getOpaque()
+    onSnapshotStart
 
-  rollbackEx(vbucketID uint16, vbucketUUID uint64, rollbackSeq uint64) error
+    set-opaque(vbucketID uint64, []byte)
+      b.setOpaque
 
-  onSnapshotStart
+    get-opaque(vbucketID uint64) ([]byte, lastSeq, err)
+      b.getOpaque
 
-  set-opaque(vbucketID uint64, []byte)
-    b.setOpaque
+    DataUpdate(vbucketID uint16, key []byte, seq uint64, r *gomemcached.MCRequest)
+      b.onMutation(
 
-  get-opaque(vbucketID uint64) ([]byte, lastSeq, err)
-    b.getOpaque
-
-  DataUpdate(vbucketID uint16, key []byte, seq uint64, r *gomemcached.MCRequest)
-    b.onMutation(
-
-  DataDelete(vbucketID uint16, key []byte, seq uint64, r *gomemcached.MCRequest)
+    DataDelete(vbucketID uint16, key []byte, seq uint64, r *gomemcached.MCRequest)
 
 
 
