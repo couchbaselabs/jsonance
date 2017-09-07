@@ -65,6 +65,66 @@ analysis thoughts
 
       ABCD "contains-a" / has-a ABC?
 
+      ABC --> ABCD  ---+--> ABCDE
+          --> ABCE  --/
+
+      assumption / heuristic: most fields are additive
+
+      when ABC shows up...
+
+        A ==> v1
+        B ==> v1
+        C ==> v1
+
+        v1: [A,B,C], parents: nil
+
+      when ABCD shows up...
+
+        v2: [A,B,C,D], parents: v1
+
+        A ==> v2, v1
+        B ==> v2, v1
+        C ==> v2, v1
+        D ==> v2
+
+      when ABCE shows up...
+
+        v3: [A,B,C,E], parents: v1
+
+        A ==> v3, v2, v1
+        B ==> v3, v2, v1
+        C ==> v3, v2, v1
+        D ==>     v2
+        E ==> v3
+
+      when ABCDE shows up
+
+        v4: [A,B,C,D,E], parents: v2, v3
+
+        A ==> v4, v3, v2, v1
+        B ==> v4, v3, v2, v1
+        C ==> v4, v3, v2, v1
+        D ==> v4,     v2
+        E ==> v4, v3
+
+      when ABX shows up
+
+        v5: [A,B,X], parents: nil
+
+        A ==> v5, v4, v3, v2, v1
+        B ==> v5, v4, v3, v2, v1
+        C ==>     v4, v3, v2, v1
+        D ==>     v4,     v2
+        E ==>     v4, v3
+        X ==> v5
+
+    generate short fieldId's?
+
+    what about UUID's degenerate case of a nested map?
+    or data-time fields degenerate case?
+
+    histograms for array lengths?
+
 example analysis
 
     source: {
