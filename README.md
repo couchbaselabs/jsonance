@@ -57,8 +57,13 @@ analysis thoughts
 
     what does "first time" / "last time" mean?
 
+      idea: treat the the vbId->seqNum pairs as a vector clock
+
     do missing fields mean it's a different fingerprint?
-    are brand new additional field(s) detected like inheritance relationship?  "contains-a" / has-a?
+
+    are brand new additional field(s) associated like inheritance relationship?
+
+      ABCD "contains-a" / has-a ABC?
 
 example analysis
 
