@@ -206,3 +206,9 @@ func ParseFailOverLog(body []byte) ([][]uint64, error) {
 failOverLog...
   vbID => vbUUID => seqNum
 
+
+MISON parser http://www.vldb.org/pvldb/vol10/p1118-li.pdf
+- fast json parser
+- speculative locations of fields, both logical vs physical locations
+- SIMD popcnt
+- projections pushed down to json parser
