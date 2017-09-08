@@ -125,6 +125,22 @@ analysis thoughts
 
     histograms for array lengths?
 
+    what about type fields (type: beer, type: brewery)?
+
+
+pseudocode ideas
+
+   inputs: doc, version
+
+   kvs, err = ... json parse doc that returns map[string]interface{}
+
+   keysAndValTypes := processKVs(kvs)
+
+   sig := findOrAddNewSignature(keysAndValTypes, version):
+
+   updateSignature(sig, keysAndValTypes)
+
+
 example analysis
 
     source: {
