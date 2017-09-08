@@ -72,51 +72,51 @@ analysis thoughts
 
       when ABC shows up...
 
-        A ==> v1
-        B ==> v1
-        C ==> v1
+        A ==> t1
+        B ==> t1
+        C ==> t1
 
-        v1: [A,B,C], parents: nil
+        t1: [A,B,C], parents: nil
 
       when ABCD shows up...
 
-        v2: [A,B,C,D], parents: v1
+        t2: [A,B,C,D], parents: t1
 
-        A ==> v2, v1
-        B ==> v2, v1
-        C ==> v2, v1
-        D ==> v2
+        A ==> t2, t1
+        B ==> t2, t1
+        C ==> t2, t1
+        D ==> t2
 
       when ABCE shows up...
 
-        v3: [A,B,C,E], parents: v1
+        t3: [A,B,C,E], parents: t1
 
-        A ==> v3, v2, v1
-        B ==> v3, v2, v1
-        C ==> v3, v2, v1
-        D ==>     v2
-        E ==> v3
+        A ==> t3, t2, t1
+        B ==> t3, t2, t1
+        C ==> t3, t2, t1
+        D ==>     t2
+        E ==> t3
 
       when ABCDE shows up
 
-        v4: [A,B,C,D,E], parents: v2, v3
+        t4: [A,B,C,D,E], parents: t2, t3
 
-        A ==> v4, v3, v2, v1
-        B ==> v4, v3, v2, v1
-        C ==> v4, v3, v2, v1
-        D ==> v4,     v2
-        E ==> v4, v3
+        A ==> t4, t3, t2, t1
+        B ==> t4, t3, t2, t1
+        C ==> t4, t3, t2, t1
+        D ==> t4,     t2
+        E ==> t4, t3
 
       when ABX shows up
 
-        v5: [A,B,X], parents: nil
+        t5: [A,B,X], parents: nil
 
-        A ==> v5, v4, v3, v2, v1
-        B ==> v5, v4, v3, v2, v1
-        C ==>     v4, v3, v2, v1
-        D ==>     v4,     v2
-        E ==>     v4, v3
-        X ==> v5
+        A ==> t5, t4, t3, t2, t1
+        B ==> t5, t4, t3, t2, t1
+        C ==>     t4, t3, t2, t1
+        D ==>     t4,     t2
+        E ==>     t4, t3
+        X ==> t5
 
     generate short fieldId's?
 
