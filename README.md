@@ -131,34 +131,44 @@ analysis thoughts
 pseudocode ideas
 
    inputs:
-     kvs map[string]val
-     srcRev srcRev
+     data map[string]interface{}
+     rev  rev
 
-   sig := constructSig(kvs, srcRev):
+   kvs := processData(data, rev)
 
-   mergeSig(sigs, sig)
+   sigs := constructSigs(kvs, rev) // Short for signatures.
+
+   mergeSigs(sigsState, sigs) // Track aggregates and superset-of matches of sigs.
 
 
    example:
-      { "name": "star wars", "genre": "sci-fi" }
+      processData({ "title": "star wars", "genre": "sci-fi" }, "rev-123")
       =>
-      [ { "name": "name",
-          "path": "",
-          "srcRev": srcRev,
-          "type": "string", // "string", "number", "object", "null"
-          "typeEx": null, // "datetime", "int", "float", "array"
-          "val": "star wars",
-          "valSig": null
-        },
-        { "name": "genre",
-          "path": "",
-          "srcRev": srcRev,
-          "type": "string",
-          "typeEx": null,
-          "val": "sci-fi",
-          "valSig": null
-        }
-      ]
+        [ { "name": "title",
+            "path": "",
+            "type": "string",   // "string", "number", "object", "array", "null", "boolean"
+            "typeEx": null,     // "datetime" (rfcXxxx?), "int", "float"
+            "val": "star wars", ==> track aggregates of min, max, count, lenMin, lenMax, lenTot
+            "rev": "rev-123",   ==> latch on existence, first write wins, like a min
+          },
+          { "name": "genre",
+            "path": "",
+            "type": "string",
+            "typeEx": null,
+            "val": "sci-fi",
+            "rev": "rev-123",
+          }
+        ]
+
+   sigs is roughly...
+     several kinds of sigs, each with a...
+       unique hash after...
+         group by path+name
+         group by path+name+type
+         group by path+name+type+typeEx
+
+
+     what about null's?
 
 
 example analysis
