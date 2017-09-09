@@ -139,6 +139,28 @@ pseudocode ideas
    mergeSig(sigs, sig)
 
 
+   example:
+      { "name": "star wars", "genre": "sci-fi" }
+      =>
+      [ { "name": "name",
+          "path": "",
+          "srcRev": srcRev,
+          "type": "string", // "string", "number", "object", "null"
+          "typeEx": null, // "datetime", "int", "float", "array"
+          "val": "star wars",
+          "valSig": null
+        },
+        { "name": "genre",
+          "path": "",
+          "srcRev": srcRev,
+          "type": "string",
+          "typeEx": null,
+          "val": "sci-fi",
+          "valSig": null
+        }
+      ]
+
+
 example analysis
 
     source: {
