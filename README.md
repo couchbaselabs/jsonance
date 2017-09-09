@@ -130,15 +130,13 @@ analysis thoughts
 
 pseudocode ideas
 
-   inputs: doc, version
+   inputs:
+     kvs map[string]val
+     srcRev srcRev
 
-   kvs, err = ... json parse doc that returns map[string]interface{}
+   sig := constructSig(kvs, srcRev):
 
-   keysAndValTypes := processKVs(kvs)
-
-   sig := findOrAddNewSignature(keysAndValTypes, version):
-
-   updateSignature(sig, keysAndValTypes)
+   mergeSig(sigs, sig)
 
 
 example analysis
